@@ -10,8 +10,23 @@
 <p>
     <a asp-page="Create">Create New</a>
 </p>
-<table class="table">
-    <thead>
+
+<form>
+    <div class="container">
+        <div style="float:right;">
+            
+                <select asp-for="SCPObjectClass" asp-items="Model.ObjectClass">
+                    <option value="">All</option>
+                </select>
+            Name: <input type="text" asp-for="SearchString" />
+            <input type="submit" value="Filter" />
+
+    </div>
+    </div>
+</form>
+
+<table class="table table-hover table-bordered table-striped" style="margin-top:5%;">
+    <thead class="bg-dark text-light text-nowrap">
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.SCP[0].Name)
