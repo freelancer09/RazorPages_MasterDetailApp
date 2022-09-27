@@ -4,7 +4,8 @@
 @{
     ViewData["Title"] = "Create";
 }
-
+<div class="continer">
+    <main role="main" class="pb-3" style="background:papayawhip;padding:20px;border-radius:20px;opacity:.95;">
 <h1>Create</h1>
 
 <h4>SCP</h4>
@@ -25,7 +26,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="SCP.Classification" class="control-label"></label>
-                <input asp-for="SCP.Classification" class="form-control" />
+                <input asp-for="SCP.Classification" class="form-control"/>
                 <span asp-validation-for="SCP.Classification" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -53,6 +54,9 @@
 <div>
     <a asp-page="Index">Back to List</a>
 </div>
+</main>
+</div>
+
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
