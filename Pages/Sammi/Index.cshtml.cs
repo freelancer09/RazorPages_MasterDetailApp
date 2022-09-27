@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using PDMasterDetail.Data;
 using PDMasterDetail.Models;
@@ -20,6 +21,12 @@ namespace PDMasterDetail.Pages.Sammi
         }
 
         public IList<SCP> SCP { get;set; } = default!;
+        [BindProperty(SupportsGet = true)]
+        public string? SearchString { get; set; }
+        public SelectList? ObjectClass { get; set; }
+        [BindProperty(SupportsGet = true)]
+        public string? SCPObjectClass { get; set; }
+        public string? SCPSort { get; set; }
 
         public async Task OnGetAsync()
         {

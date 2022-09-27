@@ -11,7 +11,7 @@ namespace PDMasterDetail.Models
         [Required]
         public string Name { get; set; } = string.Empty;
 
-        [Display(Name = "Objetct Class")]
+        [Display(Name = "Object Class")]
         [RegularExpression(@"^[A-Z]+[a-zA-Z\s]*$")]
         [Required]
         [StringLength(30)]
