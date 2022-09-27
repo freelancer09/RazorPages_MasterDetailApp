@@ -26,7 +26,7 @@ namespace RazorPagesMovie.Models
                 context.SCP.AddRange(
                     new SCP
                     {
-                        Name = "SCP 5581",
+                        Name = "SCP-5581",
                         ObjectClass = "Euclid",
                         Classification = "Human",
                         Description = "SCP-5881 refers to Ben Hennessy, a 26 year old British male, who subconsciously manifests three " +
