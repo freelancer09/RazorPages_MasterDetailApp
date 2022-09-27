@@ -4,7 +4,8 @@
 @{
     ViewData["Title"] = "Index";
 }
-
+<div class="continer">
+    <main role="main" class="pb-3" style="background:papayawhip;padding:20px;border-radius:20px;opacity:.95;">
 <h1>Index</h1>
 
 <p>
@@ -12,17 +13,30 @@
 </p>
 
 <form>
-    <div class="container">
-        <div style="float:right;">
-            
-                <select asp-for="SCPObjectClass" asp-items="Model.ObjectClass">
-                    <option value="">All</option>
-                </select>
-            Name: <input type="text" asp-for="SearchString" />
-            <input type="submit" value="Filter" />
 
+     <div style="float:inline-start">
+        <select asp-for="SCPObjectClass" asp-items="Model.ObjectClass">
+            <option value="">All</option>
+        </select>
+        Name: <input type="text" asp-for="SearchString" />
+        <input type="submit" value="Filter" class="btn-dark"/>
+        <a asp-page="./Index" asp-route-sortOrder="desc"
+                style="float:right;padding:10px;border-radius:10px;
+                text-decoration:none;margin-bottom:10px;"
+                class="bg-dark text-light">
+            Sort by Name
+            <i class="fa fa-level-down"></i>
+        </a>
+        <a asp-page="./Index" asp-route-sortOrder="asc"
+                style="float: right; padding: 10px; border-radius: 10px; 
+                margin-right:10px;text-decoration:none;
+                margin-bottom:10ox;"
+                class="bg-dark text-light">
+            Sort by Name
+            <i class="fa fa-level-up"></i>
+        </a>
     </div>
-    </div>
+
 </form>
 
 <table class="table table-hover table-bordered table-striped" style="margin-top:5%;">
@@ -79,3 +93,5 @@
 }
     </tbody>
 </table>
+</main>
+</div>
