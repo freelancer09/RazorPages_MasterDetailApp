@@ -39,6 +39,7 @@ namespace PDMasterDetail.Pages.Doug
             IQueryable<string> genreQuery = from m in _context.SCP
                                             orderby m.ObjectClass
                                             select m.ObjectClass;
+            //please
 
             var scps = from m in _context.SCP
                          select m;
