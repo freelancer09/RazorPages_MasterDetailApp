@@ -24,7 +24,7 @@ namespace PDMasterDetail.Models
         
         [RegularExpression(@"^[A-Z]+[a-zA-Z\s]*$")]
         [Required]
-        [StringLength(500, MinimumLength = 100)]
+        [StringLength(1500, MinimumLength = 100)]
         public string Description { get; set; } = string.Empty;
 
         [RegularExpression(@"^[A-Z]+[a-zA-Z\s]*$")]
