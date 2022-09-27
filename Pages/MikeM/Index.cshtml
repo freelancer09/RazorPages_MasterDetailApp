@@ -2,22 +2,35 @@
 @model PDMasterDetail.Pages.SCPs.IndexModel
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "SCPs";
 }
 
-<h1>Index</h1>
+<h1>SCPs</h1>
 
 <p>
     <a asp-page="Create">Create New</a>
 </p>
+<form>
+    <p>
+        <select asp-for="SCPClass" asp-items="Model.SCPClasses">
+            <option value="">All</option>
+        </select>
+        Description: <input type="text" asp-for="SearchString" />
+        <input type="submit" value="Filter" />
+    </p>
+</form>
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.SCP[0].Name)
+                <a asp-page="./Index" asp-route-sortOrder="@Model.NameSort">
+                    @Html.DisplayNameFor(model => model.SCP[0].Name)
+                </a>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.SCP[0].ObjectClass)
+                <a asp-page"=".Index" asp-route-sortOrder="@Model.ClassSort">
+                    @Html.DisplayNameFor(model => model.SCP[0].ObjectClass)
+                </a>                
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.SCP[0].Classification)
