@@ -28,12 +28,40 @@ namespace PDMasterDetail.Pages.Sammi
         public string? SCPObjectClass { get; set; }
         public string? SCPSort { get; set; }
 
-        public async Task OnGetAsync()
+        //public async Task OnGetAsync()
+        //{
+            //if (_context.SCP != null)
+            //{
+                //SCP = await _context.SCP.ToListAsync();
+            //}
+        //}
+        public async Task OnGetAsync(string sortOrder)
         {
-            if (_context.SCP != null)
+            SCPSort = sortOrder;
+            IQueryable<string> genreQuery = from m in _context.SCP
+                                            orderby m.ObjectClass
+                                            select m.ObjectClass;
+            var scps = from m in _context.SCP
+                       select m;
+
+            if(!string.IsNullOrEmpty(SearchString))
             {
-                SCP = await _context.SCP.ToListAsync();
+                scps = scps.Where(s => s.Name.Contains(SearchString));
             }
+            if (!string.IsNullOrEmpty(SCPObjectClass))
+            {
+                scps = scps.Where(x => x.ObjectClass == SCPObjectClass);
+            }
+            if (SCPSort == "desc")
+            {
+                scps = scps.OrderByDescending(m => m.Name);
+            }
+            else
+            {
+                scps = scps.OrderBy(m => m.Name);
+            }
+            ObjectClass = new SelectList(await genreQuery.Distinct().ToListAsync());
+            SCP = await scps.ToListAsync();
         }
     }
 }
