@@ -4,7 +4,8 @@
 @{
     ViewData["Title"] = "Create";
 }
-
+<div class="container">
+    <main role="main" class="pb-3" style="background:lavenderblush;padding:15px;border-radius:15px;opacity:.85;">
 <h1>Create</h1>
 
 <h4>SCP</h4>
@@ -53,6 +54,9 @@
 <div>
     <a asp-page="Index">Back to List</a>
 </div>
+</main>
+</div>
+
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
