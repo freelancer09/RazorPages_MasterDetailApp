@@ -6,7 +6,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddRazorPages();
 builder.Services.AddDbContext<PDMasterDetailContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("PDMasterDetailContext") ?? throw new InvalidOperationException("Connection string 'PDMasterDetailContext' not found.")));
+options.UseSqlServer(builder.Configuration.GetConnectionString("PDMasterDetailContext") ?? throw new InvalidOperationException("Connection string 'PDMasterDetailContext' not found.")));
 
 var app = builder.Build();
 
