@@ -4,76 +4,79 @@
 @{
     ViewData["Title"] = "SCPs";
 }
+<div class="continer">
+    <main role="main" class="pb-3" style="background:papayawhip;padding:20px;border-radius:20px;opacity:.95;">
+        <h1>SCPs</h1>
 
-<h1>SCPs</h1>
-
-<p>
-    <a asp-page="Create">Create New</a>
-</p>
-<form>
-    <p>
-        <select asp-for="SCPClass" asp-items="Model.SCPClasses">
-            <option value="">All</option>
-        </select>
-        Description: <input type="text" asp-for="SearchString" />
-        <input type="submit" value="Filter" />
-    </p>
-</form>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                <a asp-page="./Index" asp-route-sortOrder="@Model.NameSort">
-                    @Html.DisplayNameFor(model => model.SCP[0].Name)
-                </a>
-            </th>
-            <th>
-                <a asp-page"=".Index" asp-route-sortOrder="@Model.ClassSort">
-                    @Html.DisplayNameFor(model => model.SCP[0].ObjectClass)
-                </a>                
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.SCP[0].Classification)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.SCP[0].Description)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.SCP[0].Containment)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.SCP[0].ImageName)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model.SCP) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ObjectClass)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Classification)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Containment)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ImageName)
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+        <p>
+            <a asp-page="Create">Report New</a>
+        </p>
+        <form>
+            <p>
+                <select asp-for="SCPClass" asp-items="Model.SCPClasses">
+                    <option value="">All</option>
+                </select>
+                Description: <input type="text" asp-for="SearchString" />
+                <input type="submit" value="Filter" />
+            </p>
+        </form>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        <a asp-page="./Index" asp-route-sortOrder="@Model.NameSort">
+                            @Html.DisplayNameFor(model => model.SCP[0].Name)
+                        </a>
+                    </th>
+                    <th>
+                        <a asp-page"=".Index" asp-route-sortOrder="@Model.ClassSort">
+                            @Html.DisplayNameFor(model => model.SCP[0].ObjectClass)
+                        </a>                
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.SCP[0].Classification)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.SCP[0].Description)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.SCP[0].Containment)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.SCP[0].ImageName)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+        @foreach (var item in Model.SCP) {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ObjectClass)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Classification)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Containment)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ImageName)
+                    </td>
+                    <td>
+                        <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
+                        <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
+                        <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
+                    </td>
+                </tr>
+        }
+            </tbody>
+        </table>
+    </main>
+</div>
