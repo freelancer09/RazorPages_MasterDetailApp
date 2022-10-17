@@ -38,6 +38,7 @@ namespace RazorPagesMovie.Models
                         "Only one instance can manifest at a time.",
                         Containment ="Standard human containment cell",
                         ImageName = ""
+
                     },
 
                     new SCP
@@ -54,11 +55,13 @@ namespace RazorPagesMovie.Models
                         "it was,  'A gift from some of my subordinates. '",
                         Containment = "Wooden Pigeon Coop",
                         ImageName = ""
+
                     },
 
                     new SCP
                     {
-                        Name = "SPC-1271",
+                        Name = "SCP-1271",
+
                         ObjectClass = "Euclid",
                         Classification = "Tract of land",
                         Description = "SCP-1271 is a square tract of land approximately 20 m on each side, roughly landscaped into a " +
@@ -70,7 +73,7 @@ namespace RazorPagesMovie.Models
 
                     new SCP
                     {
-                        Name = "SCP-189",
+                        Name = "SCP-0189",
                         ObjectClass = "Safe",
                         Classification = "Parasitic Roundworm",
                         Description = "SCP-189 is a species of parasitic roundworm (tentative taxonomic classification [DATA EXPUNGED]) " +

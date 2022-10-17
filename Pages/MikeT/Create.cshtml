@@ -4,56 +4,61 @@
 @{
     ViewData["Title"] = "Create";
 }
+<div class="container">
+    <main role="main" class="pb-3" style="border:solid goldenrod 2px; background-color:aliceblue; padding:20px;border-radius:5px;">
+        <h1 style="color:midnightblue; text-align:center; background-color:whitesmoke;border:dodgerblue 1px solid;margin-bottom:20px; border-radius:5px;">SCP File Creation</h1>
 
-<h1>Create</h1>
-
-<h4>SCP</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form method="post">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="SCP.Name" class="control-label"></label>
-                <input asp-for="SCP.Name" class="form-control" />
-                <span asp-validation-for="SCP.Name" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="SCP.ObjectClass" class="control-label"></label>
-                <input asp-for="SCP.ObjectClass" class="form-control" />
-                <span asp-validation-for="SCP.ObjectClass" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="SCP.Classification" class="control-label"></label>
-                <input asp-for="SCP.Classification" class="form-control" />
-                <span asp-validation-for="SCP.Classification" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="SCP.Description" class="control-label"></label>
-                <input asp-for="SCP.Description" class="form-control" />
-                <span asp-validation-for="SCP.Description" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="SCP.Containment" class="control-label"></label>
-                <input asp-for="SCP.Containment" class="form-control" />
-                <span asp-validation-for="SCP.Containment" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="SCP.ImageName" class="control-label"></label>
-                <input asp-for="SCP.ImageName" class="form-control" />
-                <span asp-validation-for="SCP.ImageName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
+    <h4>SCP Information Form:</h4>
+    <hr />
+        <div style="margin-bottom:10px;">
+                <form method="post" class="row">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label asp-for="SCP.ImageName" class="control-label"></label>
+                            <input asp-for="SCP.ImageName" class="form-control" />
+                            <span asp-validation-for="SCP.ImageName" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="SCP.Name" class="control-label"></label>
+                            <input asp-for="SCP.Name" class="form-control" />
+                            <span asp-validation-for="SCP.Name" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="SCP.ObjectClass" class="control-label"></label>
+                            <input asp-for="SCP.ObjectClass" class="form-control" />
+                            <span asp-validation-for="SCP.ObjectClass" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="SCP.Classification" class="control-label"></label>
+                            <input asp-for="SCP.Classification" class="form-control" />
+                            <span asp-validation-for="SCP.Classification" class="text-danger"></span>
+                        </div>           
+                         <div class="form-group" style="margin-top:10%; text-align:center;">
+                            <input style="font-size:20px; padding-left:20%;padding-right:20%;" type="submit" value="Create" class="btn btn-primary" />
+                         </div>
+                    </div>
+                             
+                    <div class="col-md-8">
+                        <div class="form-group">
+                            <label asp-for="SCP.Description" class="control-label"></label>
+                            <textarea asp-for="SCP.Description" class="form-control" rows="6" id="Description" type="text"></textarea>
+                            <span asp-validation-for="SCP.Description" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="SCP.Containment" class="control-label"></label>
+                            <textarea asp-for="SCP.Containment" class="form-control" rows="6" id="Description" type="text"></textarea>
+                            <span asp-validation-for="SCP.Containment" class="text-danger"></span>
+                        </div>
+                    </div>
+                </form>
+        </div>
+        <hr/>
+        <div>
+            <a asp-page="Index">Back to List</a>
+        </div>
+    </main>
 </div>
-
-<div>
-    <a asp-page="Index">Back to List</a>
-</div>
-
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
