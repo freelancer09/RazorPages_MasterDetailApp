@@ -4,31 +4,36 @@
 @{
     ViewData["Title"] = "SCPs";
 }
+<h1 class="text-white">SCPs</h1>
 
-<h1>SCPs</h1>
-
-<p>
-    <a asp-page="Create">Create New</a>
-</p>
-<form>
-    <p>
-        <select asp-for="SCPClass" asp-items="Model.SCPClasses">
-            <option value="">All</option>
-        </select>
-        Description: <input type="text" asp-for="SearchString" />
-        <input type="submit" value="Filter" />
-    </p>
-</form>
-<table class="table">
-    <thead>
+<div class="p-3 bg-dark text-light rounded">
+    <form class="row">
+        <div class="col-6">
+            <a class="btn btn-primary" asp-page="Create">Report SCP</a>
+            <a class="btn btn-primary" asp-page="Upload">Upload Image</a>
+        </div>
+        <div class="col-6 text-end">
+            <select asp-for="SCPClass" asp-items="Model.SCPClasses">
+                <option value="">Choose...</option>
+            </select>
+            <input type="text" asp-for="SearchString" placeholder="Description"/>
+            <input class="btn btn-primary" type="submit" value="Search" />
+        </div>
+    </form>
+</div>
+<hr />
+<table class="table table-striped table-dark">
+    <thead class="table-primary">
         <tr>
             <th>
-                <a asp-page="./Index" asp-route-sortOrder="@Model.NameSort">
+            </th>
+            <th>
+                <a class="btn btn-primary" asp-page="./Index" asp-route-sortOrder="@Model.NameSort">
                     @Html.DisplayNameFor(model => model.SCP[0].Name)
                 </a>
             </th>
             <th>
-                <a asp-page"=".Index" asp-route-sortOrder="@Model.ClassSort">
+                <a class="btn btn-primary" asp-page"=".Index" asp-route-sortOrder="@Model.ClassSort">
                     @Html.DisplayNameFor(model => model.SCP[0].ObjectClass)
                 </a>                
             </th>
@@ -41,15 +46,18 @@
             <th>
                 @Html.DisplayNameFor(model => model.SCP[0].Containment)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.SCP[0].ImageName)
-            </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
 @foreach (var item in Model.SCP) {
-        <tr>
+            <tr>
+                <td>
+                    @{
+                       var imagePath = (item.ImageName != "") ? @"uploads\" + item.ImageName : @"images\scp-inverse.png";
+                    }
+                    <img src="@imagePath" class="img-fluid img-thumbnail" />
+            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Name)
             </td>
@@ -60,18 +68,31 @@
                 @Html.DisplayFor(modelItem => item.Classification)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Description)
+                @if (item.Description.Length > 300)
+                {
+                    @item.Description.Substring(0,300)
+                    <b>...</b>
+                }
+                else
+                {
+                    @Html.DisplayFor(modelItem => item.Description)
+                }
             </td>
+                <td>
+                    @if (item.Containment.Length > 300)
+                    {
+                        @item.Containment.Substring(0,300)
+                        <b>...</b>
+                    }
+                    else
+                    {
+                        @Html.DisplayFor(modelItem => item.Containment)
+                    }
+                </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Containment)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ImageName)
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
+                <a class="btn btn-primary btn-sm" asp-page="./Edit" asp-route-id="@item.ID">Edit</a>
+                <a class="btn btn-primary btn-sm" asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
+                <a class="btn btn-primary btn-sm" asp-page="./Details" asp-route-id="@item.ID">Details</a>
             </td>
         </tr>
 }

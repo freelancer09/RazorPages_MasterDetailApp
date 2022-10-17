@@ -4,6 +4,8 @@
 @{
     ViewData["Title"] = "Details";
 }
+<div class="container">
+    <main role="main" class="pb-3" style="background:lavenderblush;padding:15px;border-radius:15px;opacity:.85;">
 
 <h1>Details</h1>
 
@@ -52,4 +54,6 @@
 <div>
     <a asp-page="./Edit" asp-route-id="@Model.SCP?.ID">Edit</a> |
     <a asp-page="./Index">Back to List</a>
+</div>
+</main>
 </div>
