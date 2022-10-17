@@ -2,11 +2,11 @@
 @model PDMasterDetail.Pages.Doug.CreateModel
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Report";
 }
 <div class="continer">
     <main role="main" class="pb-3" style="background:papayawhip;padding:20px;border-radius:20px;opacity:.95;">
-<h1>Create</h1>
+<h1>Report</h1>
 
 <h4>SCP</h4>
 <hr />
@@ -39,11 +39,12 @@
                 <input asp-for="SCP.Containment" class="form-control" />
                 <span asp-validation-for="SCP.Containment" class="text-danger"></span>
             </div>
+            @*
             <div class="form-group">
                 <label asp-for="SCP.ImageName" class="control-label"></label>
                 <input asp-for="SCP.ImageName" class="form-control" />
                 <span asp-validation-for="SCP.ImageName" class="text-danger"></span>
-            </div>
+                    </div>*@
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
