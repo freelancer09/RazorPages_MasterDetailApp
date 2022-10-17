@@ -37,7 +37,8 @@ namespace RazorPagesMovie.Models
                         "manifestations previously occurred a minimum of once every two hours, and a maximum of once every three days. " +
                         "Only one instance can manifest at a time.",
                         Containment ="Standard human containment cell",
-                        ImageName = "placeholder text"
+                        ImageName = ""
+
                     },
 
                     new SCP
@@ -53,19 +54,21 @@ namespace RazorPagesMovie.Models
                         "fedora while outside of its enclosure. When asked how it acquired such apparel, SCP-6567 explained that " +
                         "it was,  'A gift from some of my subordinates. '",
                         Containment = "Wooden Pigeon Coop",
-                        ImageName = "NA"
+                        ImageName = ""
+
                     },
 
                     new SCP
                     {
                         Name = "SCP-1271",
+
                         ObjectClass = "Euclid",
                         Classification = "Tract of land",
                         Description = "SCP-1271 is a square tract of land approximately 20 m on each side, roughly landscaped into a " +
                         "functional kickball field. The field comprised a portion of the grounds of Sheckler Elementary School in " +
                         "Catasauqua, PA, before the school was closed in 1967. The grounds have been abandoned ever since.",
                         Containment = "Fencing",
-                        ImageName = "placeholder text"
+                        ImageName = ""
                     },
 
                     new SCP
@@ -79,7 +82,7 @@ namespace RazorPagesMovie.Models
                         "of some species of nematode, which anchor the sacs to the skin's surface. Contact with sebum then prompts the eggs " +
                         "inside to hatch, at which time the larvae seek out and burrow into one or more nearby hair follicles.",
                         Containment = "Cryo-containment Facility",
-                        ImageName = "placeholder text"
+                        ImageName = ""
                     }
                 );
                 context.SaveChanges();

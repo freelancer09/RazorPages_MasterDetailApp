@@ -5,9 +5,11 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.EntityFrameworkCore;
 using PDMasterDetail.Data;
 using PDMasterDetail.Models;
+using Microsoft.Extensions.FileProviders;
 
 namespace PDMasterDetail.Pages.SCPs
 {
@@ -19,8 +21,8 @@ namespace PDMasterDetail.Pages.SCPs
         {
             _context = context;
         }
+        public IList<SCP> SCP { get; set; } = default!;
 
-        public IList<SCP> SCP { get;set; } = default!;
         [BindProperty(SupportsGet = true)]
         public string SearchString { get; set; }
         public SelectList SCPClasses { get; set; }
@@ -61,7 +63,8 @@ namespace PDMasterDetail.Pages.SCPs
             }
             SCPClasses = new SelectList(await classQuery.Distinct().ToListAsync());
 
-            SCP = await scp.ToListAsync();            
+            SCP = await scp.ToListAsync();
+
         }
     }
 }
