@@ -56,9 +56,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.SCP[0].Containment)
             </th>
-            <th>
+            @*<th>
                 @Html.DisplayNameFor(model => model.SCP[0].ImageName)
-            </th>
+                        </th>*@
             <th></th>
         </tr>
         </thead>
@@ -80,9 +80,9 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Containment)
             </td>
-            <td>
+            @*<td>
                 @Html.DisplayFor(modelItem => item.ImageName)
-            </td>
+                        </td>*@
             <td>
                 <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
                 <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
