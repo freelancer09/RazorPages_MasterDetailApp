@@ -11,7 +11,7 @@ using PDMasterDetail.Data;
 namespace PDMasterDetail.Migrations
 {
     [DbContext(typeof(PDMasterDetailContext))]
-    [Migration("20220920204555_InitialCreate")]
+    [Migration("20221016212528_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -33,15 +33,18 @@ namespace PDMasterDetail.Migrations
 
                     b.Property<string>("Classification")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("Containment")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
 
                     b.Property<string>("Description")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(1500)
+                        .HasColumnType("nvarchar(1500)");
 
                     b.Property<string>("ImageName")
                         .IsRequired()
@@ -49,11 +52,13 @@ namespace PDMasterDetail.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(60)
+                        .HasColumnType("nvarchar(60)");
 
                     b.Property<string>("ObjectClass")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.HasKey("ID");
 
