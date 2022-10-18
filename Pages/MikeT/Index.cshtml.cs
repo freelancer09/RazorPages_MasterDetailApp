@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
+﻿using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
-using PDMasterDetail.Data;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using PDMasterDetail.Models;
+using Microsoft.AspNetCore.Mvc;
 
 namespace PDMasterDetail.Pages.MikeT
 {
@@ -19,14 +15,47 @@ namespace PDMasterDetail.Pages.MikeT
             _context = context;
         }
 
-        public IList<SCP> SCP { get;set; } = default!;
+        public IList<SCP> SCP { get; set; } = default!;
+        [BindProperty(SupportsGet = true)]
+        public string? SearchString { get; set; }
+        public SelectList? ObjectClass { get; set; }
+        [BindProperty(SupportsGet = true)]
+        public string? ClassSort { get; set; }
+        public string? NameSort { get; set; }
 
-        public async Task OnGetAsync()
+        public async Task OnGetAsync(string sortOrder)
         {
-            if (_context.SCP != null)
+            NameSort = string.IsNullOrEmpty(sortOrder) ? "desc" : "";
+
+
+            IQueryable<string> classQuery = from i in _context.SCP orderby i.ObjectClass select i.ObjectClass;
+
+            var SCPinfo = from i in _context.SCP select i;
+
+            if (!string.IsNullOrEmpty(SearchString))
             {
-                SCP = await _context.SCP.ToListAsync();
+                SCPinfo = SCPinfo.Where(n => n.Name.Contains(SearchString));
             }
+
+            if (!string.IsNullOrEmpty(ClassSort))
+            {
+                SCPinfo = SCPinfo.Where(c => c.ObjectClass == ClassSort);
+            }
+
+            switch (sortOrder)
+            {
+                case "desc":
+                    SCPinfo = SCPinfo.OrderByDescending(i => i.Name);
+                    break;
+                default:
+                    SCPinfo = SCPinfo.OrderBy(i => i.Name);
+                    break;
+            }
+
+            ObjectClass = new SelectList(await classQuery.Distinct().ToListAsync());
+            SCP = await SCPinfo.ToListAsync();
+
+            //SCP = await SCPs.ToListAsync();
         }
     }
 }

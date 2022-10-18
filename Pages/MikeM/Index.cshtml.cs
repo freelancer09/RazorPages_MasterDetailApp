@@ -21,8 +21,8 @@ namespace PDMasterDetail.Pages.SCPs
         {
             _context = context;
         }
-
         public IList<SCP> SCP { get; set; } = default!;
+
         [BindProperty(SupportsGet = true)]
         public string SearchString { get; set; }
         public SelectList SCPClasses { get; set; }
@@ -64,6 +64,7 @@ namespace PDMasterDetail.Pages.SCPs
             SCPClasses = new SelectList(await classQuery.Distinct().ToListAsync());
 
             SCP = await scp.ToListAsync();
+
         }
     }
 }
